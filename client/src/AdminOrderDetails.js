@@ -13,7 +13,8 @@ const AdminOrderDetails = () => {
                 orderList {
                 _id
                 UserId
-                UserName
+                firstName
+                lastName
                 }
             }
 `;
@@ -90,7 +91,7 @@ const AdminOrderDetails = () => {
             {reactOrder.map(order => (
               <tr key={order._id}>
                 <td>{order._id}</td>
-                <td>{order.UserName}</td>
+                <td>{order.firstName +' '+order.lastName}</td>
                 <td>
                   <button className="btn btn-danger" onClick={() => handleDelete(order._id)}>Remove</button>
                 </td>
