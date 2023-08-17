@@ -13,30 +13,6 @@ const OTPPage = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   let passedEmail = searchParams.get('Email');
-  
-  // useEffect(() => {
-  //   const fetchEmail = async () => {
-  //     let query = `
-  //     mutation signupVerification($Email: String!, $OTP: String) {
-  //       signupVerification(Email: $Email, OTP: $OTP) {
-  //         Email,
-  //         OTP
-  //       }
-  //     }
-  //   `;
-  //    await fetch("http://localhost:5000/graphql", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ query, variables: { Email: passedEmail } }),
-  //     }).then(async (response) => {
-  //       let reponseList = await response.json();
-  //       console.log("reponseList",reponseList);
-  //       return;
-  //     });
-  //   };
-  //   fetchEmail();
-  // },[1]);
-
 
   const handleChange = (otp) => {
     setOTP(otp);

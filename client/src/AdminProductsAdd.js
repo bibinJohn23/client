@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import {  useNavigate } from 'react-router-dom';
+import Compressor from 'compressorjs';
 
 
 const AddProducts = () => {
@@ -26,8 +27,22 @@ const AddProducts = () => {
 
   const convertToBase64 = e => {
     console.log("e",e);
-    var reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
+    const img =e.target.files[0]
+    new Compressor(img, {      
+      quality: 0.6,
+      maxHeight:500,
+      maxWidth:500,
+      convertSize:50000,
+      success: (compressedResult) => {
+        // compressedResult has the compressed file.
+        // Use the compressed file to upload the images to your server.
+        // const maxSizeInBytes = 50 * 1024; // 50kb
+        // if (compressedResult.size <= maxSizeInBytes) {
+        //   Compressor(compressedResult)
+        // }
+        setCompressedFile(compressedResult)
+        var reader = new FileReader();
+    reader.readAsDataURL(compressedResult);
     reader.onload = () => {
         console.log(reader.result);
         setProductImage(reader.result);
@@ -35,6 +50,17 @@ const AddProducts = () => {
     reader.onerror = error => {
         console.log("Error: ", error);
     };
+      },
+    });
+    // var reader = new FileReader();
+    // reader.readAsDataURL(compressedFile);
+    // reader.onload = () => {
+    //     console.log(reader.result);
+    //     setProductImage(reader.result);
+    // };
+    // reader.onerror = error => {
+    //     console.log("Error: ", error);
+    // };
   };
 
 
