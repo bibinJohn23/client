@@ -28,7 +28,7 @@ const ProductsPage = () => {
       }
       `;
       // try {
-        fetch("http://localhost:5000/graphql", {
+        fetch("https://gadget-zone-server-7sey2.ondigitalocean.app/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query }),
