@@ -28,7 +28,6 @@ const EditProducts = () => {
   };
   const [product, setProduct] = useState(initialProduct);
   const [productImage, setProductImage] = useState(product.Image);
-  const [compressedFile, setCompressedFile] = useState(null);
   const [validationErrors, setValidationErrors] = useState({});
 
   const handleInputChange = event => {
@@ -54,7 +53,6 @@ const EditProducts = () => {
         // if (compressedResult.size <= maxSizeInBytes) {
         //   Compressor(compressedResult)
         // }
-        setCompressedFile(compressedResult)
         var reader = new FileReader();
     reader.readAsDataURL(compressedResult);
     reader.onload = () => {

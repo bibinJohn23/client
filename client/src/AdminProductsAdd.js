@@ -40,7 +40,6 @@ const AddProducts = () => {
         // if (compressedResult.size <= maxSizeInBytes) {
         //   Compressor(compressedResult)
         // }
-        setCompressedFile(compressedResult)
         var reader = new FileReader();
     reader.readAsDataURL(compressedResult);
     reader.onload = () => {
